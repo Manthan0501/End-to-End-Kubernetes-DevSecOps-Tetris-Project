@@ -1,6 +1,6 @@
-resource "aws_instance" "ec2" {
+resource "aws_instance" "Jenkins-server" {
   ami                    = data.aws_ami.ami.image_id
-  instance_type          = "t3a.2xlarge"
+  instance_type          = "c7i-flex.large"
   key_name               = var.key-name
   subnet_id              = aws_subnet.public-subnet.id
   vpc_security_group_ids = [aws_security_group.security-group.id]
@@ -8,7 +8,7 @@ resource "aws_instance" "ec2" {
   root_block_device {
     volume_size = 30
   }
-  user_data = templatefile("./tools-install.sh", {})
+  user_data = file("tools-install.sh")
 
   tags = {
     Name = var.instance-name
