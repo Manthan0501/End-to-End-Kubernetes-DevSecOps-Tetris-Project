@@ -1,6 +1,6 @@
 properties([
     parameters([
-        string(defaultValue: 'variables.tf', description: 'Specify the file name', name: 'File-Name'),
+        string(defaultValue: 'variables.tfvars', description: 'Specify the file name', name: 'File-Name'),
         choice(choices: ['plan', 'apply', 'destroy'], description: 'Select Terraform action', name: 'Terraform-Action')
     ])
 ])
