@@ -31,12 +31,14 @@ resource "aws_subnet" "public-subnet1" {
   cidr_block              = "10.0.2.0/24"
   availability_zone       = "eu-west-1a"
   map_public_ip_on_launch = true
+}
 
 resource "aws_subnet" "public-subnet2" {
   vpc_id                  = data.aws_vpc.vpc.id
   cidr_block              = "10.0.4.0/24"
   availability_zone       = "eu-west-1b"
   map_public_ip_on_launch = true
+}
 
   tags = {
     Name = var.subnet-name2
