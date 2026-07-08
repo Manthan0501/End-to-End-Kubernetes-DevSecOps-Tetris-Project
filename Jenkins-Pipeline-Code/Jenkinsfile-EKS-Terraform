@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Initializing Terraform') {
             steps {
-                withAWS(credentials: 'aws-key', region: 'eu-west-1') {
+                withAWS(credentials: 'aws-user-creds', region: 'eu-west-1') {
                 dir('EKS-TF') {
                     script {
                         sh 'terraform init -reconfigure'
