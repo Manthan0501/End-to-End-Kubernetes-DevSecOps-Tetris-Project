@@ -1,25 +1,25 @@
 variable "vpc-name" {
-  default = "Jenkins-vpc"
+  default = "Tetris-vpc"
 }
 
 variable "igw-name" {
-  default = "Jenkins-igw"
+  default = "Tetris-igw"
 }
 
 variable "rt-name2" {
-  default = "Jenkins-route-table2"
+  default = "Tetris-route-table2"
 }
 
 variable "subnet-name" {
-  default = "Jenkins-subnet"
+  default = "Tetris-subnet"
 }
 
 variable "subnet-name2" {
-  default = "Jenkins-subnet2"
+  default = "Tetris-subnet2"
 }
 
 variable "security-group-name" {
-  default = "Jenkins-sg"
+  default = "Tetris-sg"
 }
 
 variable "iam-role-eks" {
