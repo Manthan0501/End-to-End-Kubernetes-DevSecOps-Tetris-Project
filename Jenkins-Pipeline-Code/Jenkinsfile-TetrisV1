@@ -16,8 +16,6 @@ pipeline {
                 git branch: 'manthan/customize', url: 'https://github.com/Manthan0501/End-to-End-Kubernetes-DevSecOps-Tetris-Project.git'
             }
         }
-            }
-        }
         stage('Installing Dependencies') {
             steps {
                 dir('Tetris-V1') {
