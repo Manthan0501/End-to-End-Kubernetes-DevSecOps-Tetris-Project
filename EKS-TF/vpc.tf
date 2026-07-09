@@ -25,6 +25,17 @@ data "aws_security_group" "sg-default" {
     values = [var.security-group-name]
   }
 }
+resource "aws_vpc_security_group_ingress_rule" "allow_nodeport" {
+  security_group_id = data.aws_security_group.sg-default.id
+
+  ip_protocol = "tcp"
+  from_port   = 30000
+  to_port     = 32767
+
+  cidr_ipv4 = "10.0.0.0/16"
+
+  description = "Allow Kubernetes NodePort range from VPC"
+}
 
 
 resource "aws_subnet" "public-subnet2" {
