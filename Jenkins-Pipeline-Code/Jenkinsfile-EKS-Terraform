@@ -35,17 +35,7 @@ pipeline {
                 }
             }
         }
-        stage('Terraform Plan') {
-            steps {
-                withAWS(credentials: 'aws-user-creds', region: 'eu-west-1') {
-                dir('EKS-TF') {
-                    script {
-                        sh "terraform plan"
-                    }
-                }
-                }
-            }
-        }
+        
         stage('Terraform Action') {
             steps {
                 withAWS(credentials: 'aws-user-creds', region: 'eu-west-1') {
@@ -54,11 +44,11 @@ pipeline {
                     dir('EKS-TF') {
                         script {
                             if (params.'Terraform-Action' == 'plan') {
-                                sh "terraform plan -var-file=${params.'File-Name'}"
+                                sh "terraform plan"
                             } else if (params.'Terraform-Action' == 'apply') {
-                                sh "terraform apply -auto-approve -var-file=${params.'File-Name'}"
+                                sh "terraform apply -auto-approve"
                             } else if (params.'Terraform-Action' == 'destroy') {
-                                sh "terraform destroy -auto-approve -var-file=${params.'File-Name'}"
+                                sh "terraform destroy -auto-approve"
                             } else {
                                 error "Invalid value for Terraform-Action: ${params.'Terraform-Action'}"
                             }
