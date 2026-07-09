@@ -13,10 +13,10 @@ output "aws_cluster_arn" {
 
 output "eks_node_private_ips" {
   description = "Private IP addresses of EKS worker nodes"
-  value       = aws_eks_node_group.eks-node-group.instances[*].private_ip
+  value       = data.aws_instances.eks_nodes.private_ips
 }
 
 output "eks_node_public_ips" {
   description = "Public IP addresses of EKS worker nodes"
-  value       = aws_eks_node_group.eks-node-group.instances[*].public_ip
+  value       = data.aws_instances.eks_nodes.public_ips
 }
