@@ -4,7 +4,7 @@ pipeline {
         nodejs 'nodejs'
     }
     environment  {
-        SCANNER_HOME=tool 'sonar-scanner'
+        SCANNER_HOME=tool 'sonar-server'
     }
     stages {
         stage('Cleaning Workspace') {
@@ -20,8 +20,8 @@ pipeline {
         stage('Sonarqube Analysis') {
             steps {
                 dir('Tetris-V1') {
-                    withSonarQubeEnv('sonar-scanner') {
-                        sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Tetris \
+                    withSonarQubeEnv('sonar-server') {
+                        sh ''' $SCANNER_HOME/bin/sonar-server -Dsonar.projectName=Tetris \
                         -Dsonar.projectKey=Tetris '''
                     }
                 }
